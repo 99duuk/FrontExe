@@ -1,15 +1,43 @@
+body{
+    background-color: #ff00f7;
+}
 
 div{
-    border:1px solid #222;
+
+    border-radius: 30px;
+    border:1px solid #0000ff;
 }
 #container{
     width: 600;
     border: none;
+    margin: 20px auto;
 }
 table, th, td{
-    border: 1px solid #ffbcbc;
+    border: 1px solid #a80303;
     border-collapse: collapse;
 }
 th, td{
     padding: 10px 20px;
+}
+#description{
+    border: dotted 4px red;
+    background-color: aquamarine;
+    padding: 30px;
+    border-radius: 30px 30px 0px 0px;
+    margin-bottom: 20px;
+}
+
+
+#receipe{
+    border: 4px dotted rgb(0, 111, 113);
+    background-color: aquamarine;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+#package{
+    border: 4px dashed darkgreen;
+    background-color: aquamarine;
+    padding: 30px;
+    border-radius: 0px 0px 30px 30px;
+
 }

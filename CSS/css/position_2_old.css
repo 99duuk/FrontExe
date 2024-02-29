@@ -1,0 +1,27 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#contents{
+    background: url("../../images/루크.jpg") no-repeat;
+    background-size: cover;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+#id1{
+    color: #90c;
+    font-size: 120px;
+    text-shadow: 2px 3px 0 #09c;
+}
+#id2{
+    color: #90c;
+    font-size: 120px;
+    text-shadow: 2px 3px 0 #09c;
+
+}
+

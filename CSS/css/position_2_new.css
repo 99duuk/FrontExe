@@ -1,0 +1,70 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#contents{
+    background: url("../../images/루크.jpg") no-repeat;
+    background-size: cover;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#id1{
+    color: #90c;
+    font-size: 120px;
+    text-shadow: 2px 3px 5px #09c;
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+
+
+#id2{
+    color: #90c;
+    font-size: 120px;
+    text-shadow: 2px 3px 5px #09c;
+    position: absolute;
+    right: 40px;
+    bottom: 10px;
+}
+
+#contents1{
+    background: url("../../images/정대만14.jpg") no-repeat;
+    background-size: cover;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+#id3{
+    color: red;
+    font-size: 120px;
+    text-shadow: 2px 3px 10px rgb(0, 0, 0);
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+
+
+#id4{
+    color: red;
+    font-size: 120px;
+    text-shadow: 2px 3px 5px black;
+        position: absolute;
+    right: 40px;
+    bottom: 10px;
+}
+
+#block{
+    width: 800px;
+    height: 50px;
+}
