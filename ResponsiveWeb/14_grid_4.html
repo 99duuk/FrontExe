@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            grid-template-rows: minmax(100px, auto);
+            grid-gap:20px 50px; /*  줄 간격, 컬럼 간격 */
+        }
+
+        .items{
+            padding: 15px;
+            background-color: #09c;
+
+        }
+        .items:nth-child(odd){
+            background-color: #90c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="items">라이트세이버 결투에서는 최강이라고 언급될 정도는 아니지만, 몇 손안에 꼽히는 최상위권 강자로서 시스 군주 둘을 썰었다. </div>
+        <div class="items">단순 숫자만 세보면 오비완만큼 많이 썬 인물도 없다. 1편부터 다스 몰을 1대 1로 썰어버리고 그리버스를 1대 1로 썰어버리고 마지막에는 아나킨까지 썰어버리는 등, </div>
+        <div class="items">오비완이 썰지 못한 인물은 황제와 두쿠밖에 없다. </div>
+        <div class="items">또한 다스 몰과의 최후의 전투에서도 고작 3합만에 다스 몰을 물리친다. 루크를 위해 사라지기 전까지 두쿠와의 전투를 제외한 모든 굵직한 전투에서 져본 적이 없는 스타워즈 작중 최강자라고 보는 시각도 있다. </div>
+        <div class="items">특히 그의 수비력은 스타워즈 세계관에서도 탑을 달리며, 자신을 베도록 허용하기 전까지는 승리하지 못할지언정 패배한 적은 없다고 해도 무방하다.</div>
+    </div>
+
+</body>
+</html>
