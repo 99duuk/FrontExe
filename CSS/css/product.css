@@ -36,7 +36,7 @@ h1 {
     text-align: center;
     color: red;
     font-weight: bold;
-    display: flex;
+    display:block;
     justify-content: center;
     align-items: center;
 }
@@ -45,7 +45,7 @@ h1 {
     position: absolute;
     top: 100px;
     width: 500px;
-    height: 200px;
+    height: 180px;
     padding-top: 10px;
     background:rgb(0,0,0,6);
     opacity: 0;
