@@ -1,0 +1,19 @@
+
+/* 공통 부분 
+------------------------------------------- */
+
+html{
+    font-size: 100%;
+}
+
+body{
+    font-family: "나눔고딕", NanumGothic, "맑은고딕", MalgunGothic, "Apple SC Gothic Neo", sans-serif;
+    line-height: 1.7;
+    color: darkcyan;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
