@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            //const button = document.getElementById('btnStart');
+            const button = document.querySelector('#btnStart'); //선택자 
+            button.addEventListener('click', () => {
+                // parseInt : int 형으로 변환
+                // parseFloat : float형으로 변환
+
+                const luckyVal = parseInt(Math.random() * 10 + 1); // 1~10의 난수
+                switch (luckyVal) {
+                    case 3:
+                        document.write('냉장고 당첨!')
+                        break;
+                    case 5:
+                        document.write('세탁기 당첨!')
+                        break;
+                    case 7:
+                        document.write('노트북 당첨!')
+                        break;
+                    default:
+                        document.write('꽝!!!')
+                        break;
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <button id="btnStart"> 추첨</button>
+</body>
+
+</html>
