@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+            padding: 0 20px 30px 20px;
+            margin: 15px;
+            border: 1px solid red;
+            line-height: 2;
+        }
+
+        table {
+            margin: 20px;
+            float: left;
+        }
+
+
+        table,
+        th {
+            border: 4px dashed red;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px 15px;
+        }
+
+        th {
+            background: rgb(0, 255, 195);
+        }
+
+        td {
+            border: 1px dotted blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>구구단</h1>
+    <script>
+        for (let i = 1; i <= 9; i++) {
+            if (i > 5)
+            break;
+            document.write("<table>");
+            document.write("<tr><th>" + i + "단</th></tr>");
+            for (let j = 1; j <= 9; j++) {
+                document.write("<tr><th>" + i + " x " + j + " = " + (i * j) + "</th></tr>");
+            }
+            document.write("</table>");
+        }
+    </script>
+</body>
+
+</html>
