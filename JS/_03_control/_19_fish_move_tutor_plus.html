@@ -1,0 +1,129 @@
+User
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel {
+            width: 2550px;
+            height: 870px;
+            background-image: url('../../images_D/pre.jpg');
+            background-size: cover;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+            width: 200px;
+            height: auto;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const panel = document.getElementById('panel');
+            const fish = document.getElementById('fish');
+            const txtX = document.getElementById('txtX');
+            const txtY = document.getElementById('txtY');
+            let moveInterval;
+            let isMoving = false; // 이미지가 움직이는지 여부를 나타내는 변수
+            let direction = { x: 0, y: 0 }; // 이미지의 이동 방향을 나타내는 객체
+
+            // 이미지의 초기 위치 설정
+            let initialLeft = 500; // 초기 x 좌표
+            let initialTop = 330; // 초기 y 좌표
+            fish.style.left = initialLeft + 'px';
+            fish.style.top = initialTop + 'px';
+
+            document.addEventListener('keydown', function (e) {
+                if (!isMoving) { // 이미지가 움직이고 있는 동안에는 추가적인 움직임을 방지
+                    const x = Number(txtX.value);
+                    const y = Number(txtY.value);
+
+                    switch (e.keyCode) {
+                        case 37: // 왼쪽 화살표
+                            direction.x = -6;
+                            direction.y = 0;
+                            break;
+                        case 39: // 오른쪽 화살표
+                            direction.x = 6;
+                            direction.y = 0;
+                            break;
+                        case 38: // 위쪽 화살표
+                            direction.x = 0;
+                            direction.y = -3;
+                            break;
+                        case 40: // 아래쪽 화살표
+                            direction.x = 0;
+                            direction.y = 3;
+                            break;
+                    }
+
+                    moveInterval = setInterval(() => {
+                        const fishLeft = parseInt(fish.style.left);
+                        const fishTop = parseInt(fish.style.top);
+
+                        // 이미지의 새로운 위치 계산
+                        const newLeft = fishLeft + direction.x * 10;
+                        const newTop = fishTop + direction.y * 10;
+
+                        // 영역을 벗어나지 않도록 조정
+                        const maxLeft = panel.offsetWidth - fish.offsetWidth;
+                        const maxTop = panel.offsetHeight - fish.offsetHeight;
+                        const limitedLeft = Math.max(0, Math.min(newLeft, maxLeft));
+                        const limitedTop = Math.max(0, Math.min(newTop, maxTop));
+
+                        // 영역에 닿으면 튕기는 처리
+                        if (limitedLeft === 0 || limitedLeft === maxLeft) {
+                            direction.x *= -1; // x 방향 반전
+                            fish.style.left = limitedLeft + direction.x * 50 + 'px';
+                        } else {
+                            fish.style.left = limitedLeft + 'px';
+                        }
+
+                        if (limitedTop === 0 || limitedTop === maxTop) {
+                            direction.y *= -1; // y 방향 반전
+                            fish.style.top = limitedTop + direction.y * 30 + 'px';
+                        } else {
+                            fish.style.top = limitedTop + 'px';
+                        }
+
+                    }, 50);
+
+                    isMoving = true; // 이미지가 움직이는 상태로 변경
+                }
+            });
+
+            document.addEventListener('keyup', () => {
+                clearInterval(moveInterval);
+                isMoving = false; // 이미지가 멈춘 상태로 변경
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="panel">
+        <img src="../../images_D/yoda.png" id="fish">
+    </div>
+    <div id="nav">
+        <label>X 좌표: <input type="text" id="txtX" value="50"></label>
+        <label>Y 좌표: <input type="text" id="txtY" value="120"></label>
+
+    </div>
+
+
+</body>
+
+</html>

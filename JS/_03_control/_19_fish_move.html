@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel {
+            width: 1000px;
+            height: 700px;
+            background-image: url('../../images_D/pre.jpg');
+            background-size: cover;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+    <script>    //(html이 더 늦음)
+        // document의 html DOM의 로딩이 완료되면 함수가 호출되도록 함수를 등록시켜준다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const fish = document.getElementById('fish');
+            const txtX = document.getElementById('txtX');
+            const txtY = document.getElementById('txtY');
+            let moveInterval;
+            let isMoving = false; // 이미지가 움직이는지 여부를 나타내는 변수
+
+            // 이미지의 초기 위치 설정
+            let initialLeft = 50; // 초기 x 좌표
+            let initialTop = 120; // 초기 y 좌표
+            fish.style.left = initialLeft + 'px';
+            fish.style.top = initialTop + 'px';
+
+
+            document.addEventListener('keydown', function (e) {
+                if (!isMoving) { // 이미지가 움직이고 있는 동안에는 추가적인 움직임을 방지
+                    const x = Number(txtX.value);
+                    const y = Number(txtY.value);
+
+                    switch (e.keyCode) {
+                        case 37: // 왼쪽 화살표
+                            moveInterval = setInterval(() => {
+                                if (parseInt(fish.style.left) > 0) {
+                                    fish.style.left = parseInt(fish.style.left) - 10 + 'px';
+                                }
+                            }, 50);
+                            break;
+                        case 39: // 오른쪽 화살표
+                            moveInterval = setInterval(() => {
+                                if (parseInt(fish.style.left) < panel.offsetWidth - fish.offsetWidth) {
+                                    fish.style.left = parseInt(fish.style.left) + 10 + 'px';
+                                }
+                            }, 50);
+                            break;
+                        case 38: // 위쪽 화살표
+                            moveInterval = setInterval(() => {
+                                if (parseInt(fish.style.top) > 0) {
+                                    fish.style.top = parseInt(fish.style.top) - 10 + 'px';
+                                }
+                            }, 50);
+                            break;
+                        case 40: // 아래쪽 화살표
+                            moveInterval = setInterval(() => {
+                                if (parseInt(fish.style.top) < panel.offsetHeight - fish.offsetHeight) {
+                                    fish.style.top = parseInt(fish.style.top) + 10 + 'px';
+                                }
+                            }, 50);
+                            break;
+                    }
+                    isMoving = true; // 이미지가 움직이는 상태로 변경
+                }
+            });
+
+            document.addEventListener('keyup', () => {
+                clearInterval(moveInterval);
+                isMoving = false; // 이미지가 멈춘 상태로 변경
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="panel">
+        <img src="../../images_D/스크린샷 2024-03-07 122900.png" id="fish">
+    </div>
+    <div id="nav">
+        <label>X 좌표: <input type="text" id="txtX" value="50"></label>
+        <label>Y 좌표: <input type="text" id="txtY" value="120"></label>
+
+    </div>
+
+
+</body>
+
+</html>
