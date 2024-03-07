@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pannel {
+            width: 600px;
+            height: 400px;
+            background-image: url('../../images_D/pre.jpg');
+            background-size: cover;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+    <script>    //(html이 더 늦음)
+    // document의 html DOM의 로딩이 완료되면 함수가 호출되도록 함수를 등록시켜준다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const fish = document.getElementById('fish');   //id가 fish인 element에 접근해서 그 요소 가져와!! 
+
+            const button = document.getElementById('btnStart');
+            button.addEventListener('click', function(){    //function() ㄱㅊ () => ㄱㅊ
+                const x = Number(document.getElementById('txtX').value);
+                const y = Number(document.getElementById('txtY').value);
+
+                if((x >= 0 && x <= 500) && (y >= 0 && y <= 300)){
+                    fish.style.left = x + 'px';
+                    fish.style.top = y + 'px';
+                }else{
+                    alert("입력값 범위 over")
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="pannel">
+        <img src="../../images_D/스크린샷 2024-03-07 122900.png" id="fish">
+    </div>
+    <div id="nav">
+        <label>x값 입력 : <input id="txtX"></label>
+        <label>y값 입력 : <input id="txtY"></label>
+        <br>
+        <button id="btnStart">물고기 움직이기</button>
+    </div>
+
+
+</body>
+
+</html>
