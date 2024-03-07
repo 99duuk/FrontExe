@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*
+숫자 7을 입력하면
+      *
+     ***
+    *****
+   *******
+  *********
+ ***********
+*************
+
+*/
+        #pannel {
+            width: 600px;
+            height: 400px;
+            background-image: url('../../../images_D/사막.png');
+            background-size: cover;
+            border: 3px solid red;
+            position: relative;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('starStart');
+            button.addEventListener('click', function () {
+                const ea = Number(document.getElementById('ea').value);
+                const pannel = document.getElementById('pannel');
+
+                if (ea > 10) {
+                    alert("입력값 범위 over");
+                    return;
+                }
+                pannel.innerHTML = '';
+
+                for (let i = 1; i <= ea; i++) {
+                    for (let j = 0; j < 2 * i - 1; j++) {
+                            pannel.innerHTML += '*';
+                    }
+                    pannel.innerHTML += '<br>';
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="pannel">
+    </div>
+    <div id="nav">
+        <label>몇 개? : <input id="ea"></label>
+        <br>
+        <button id="starStart">피라미드 찍기</button>
+    </div>
+</body>
+
+</html>

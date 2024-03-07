@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        /*
+        7을 입력하면
+           *
+          ***
+         *****
+        *******
+         *****
+          ***
+           *
+        */
+        #panel {
+            width: 1000px;
+            height: 1100px;
+            background-image: url('../../../images_D/우주.png');
+            background-size: cover;
+            border: 3px solid red;
+            position: relative;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('starStart'); // 수정: button 변수를 startStar id를 가진 요소로 선택
+            button.addEventListener('click', function(){
+                const ea = Number(document.getElementById('ea').value);
+                const panel = document.getElementById('panel'); // 수정: panel 변수 오타 수정
+
+                if (ea > 10) {
+                    alert("입력값 범위 over");
+                    return;
+                }
+                panel.innerHTML = '';
+
+                for(let i = 1; i <= ea; i++){
+                    for(let j = i; j < ea; j++) {
+                        panel.innerHTML += '&nbsp;';
+                    }
+                    for(let j = 0; j < (i*2); j++) {
+                        panel.innerHTML += '*';
+                    }
+                    panel.innerHTML += '<br>';
+                }
+                for(let i = ea - 1; i >= 1; i--){
+                    for(let j = i; j < ea; j++) {
+                        panel.innerHTML += '&nbsp;';
+                    }
+                    for(let j = 0; j < (i*2) - 1; j++) {
+                        panel.innerHTML += '*';
+                    }
+                    panel.innerHTML += '<br>';
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="panel">
+    </div>
+    <div id="nav">
+        <label>몇 개? : <input id="ea"></label>
+        <br>
+        <button id="starStart">다이아몬드 찍기</button> <!-- 수정: id 속성값 수정 -->
+    </div>
+</body>
+</html>
