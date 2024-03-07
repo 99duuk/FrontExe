@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const str = '하이루 방가방가';
+        console.log(str[3]);
+
+        const nameArr = ['김동우', '권재원', '김로사', '서혜리', '유민진', '박지우'];
+        console.log('length of arr:', nameArr.length);
+        console.log(nameArr);
+        console.log(nameArr[2]);
+        nameArr.push('이명박');
+        console.log(nameArr);
+        nameArr[20] = '전두환';
+        console.log(nameArr);
+
+        const array = [3.14, '문재인', 10, ['a', 'b', 'c']];
+        console.log(array);
+        array[array.length] = '박근혜';
+        array[array.length] = '한동훈'; //똑같이 맨뒤로 들어감 (=push)
+
+        array.splice(2,1);      //remove 1ea from index 2 position
+        console.log(array);
+
+        console.log('김동우의 위치는 :' + array.indexOf('김동우'));
+
+        const fruits = ['사과', '배', '포도', '멜론', '수박'];
+        fruits.splice(1, 0, '수박');    //인덱스 1위치에 수박 추가 
+        console.log(fruits);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
