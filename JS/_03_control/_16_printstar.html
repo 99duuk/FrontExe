@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        #pannel {
+            width: 600px;
+            height: 400px;
+            background-image: url('../../images_D/pre.jpg');
+            background-size: cover;
+            border: 3px solid red;
+            position: relative;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }*/
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+    <script>
+        /* 
+  3을 입력하면 
+  *
+  **
+  ***
+  5를 입력
+  *
+  **
+  ***
+  ****
+  *****
+
+  */
+        //(html이 더 늦음)
+        // document의 html DOM의 로딩이 완료되면 함수가 호출되도록 함수를 등록시켜준다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('starStart');
+            button.addEventListener('click', function () {    //function() ㄱㅊ () => ㄱㅊ
+                const ea = Number(document.getElementById('ea').value);
+                const pannel = document.getElementById('pannel');
+
+                if (ea > 6) {
+                    alert("입력값 범위 over");
+                    return;
+                }
+
+                pannel.innerHTML = '';
+
+                for (let i = 1; i <= ea; i++) {
+                    for (let j = 0; j < i; j++) {
+                        pannel.innerHTML += '*';
+                    }
+                    pannel.innerHTML += '<br>';
+                }
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="pannel">
+    </div>
+    <div id="nav">
+        <label>별 몇 개? : <input id="ea"></label>
+        <br>
+        <button id="starStart">별 찍기</button>
+    </div>
+
+
+</body>
+
+</html>
