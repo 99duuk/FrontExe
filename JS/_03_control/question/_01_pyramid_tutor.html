@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+숫자 7을 입력하면
+      *
+     ***
+    *****
+   *******
+  *********
+ ***********
+*************
+*/
+
+        // 숫자 입력
+        let num = Number(prompt('Enter a number', 7));
+        let output = '';
+
+        let w_line = 2 * num - 1;                               // 바닥의 별 갯수 
+        console.log('w_line=' + w_line);
+        let mid_pos = parseInt(w_line / 2);                       // 소수점을 없애면 중앙 위치 얻기 
+        console.log('mid_pos='+ mid_pos);
+
+
+        let w_star = 0;                                         // 1칸 내려갈 때마다 가운데 중심에서 얼만큼 별 더 찍을지..
+        for (let i = 0; i < num; i++) {
+            for (let j = 0; j < w_line; j++) {
+                if (j >= mid_pos - w_star && j <= mid_pos + w_star)
+                    output += '*';
+                else
+                output +=  ' ';
+        }
+        output += '\n';
+        w_star++; 
+        }
+        console.log(output);
+
+    </script>
+</head>
+
+<body>
+
+    </div>
+</body>
+
+</html>

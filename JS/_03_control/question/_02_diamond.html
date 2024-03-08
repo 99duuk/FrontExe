@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <style>
         /*
         7을 입력하면
@@ -38,7 +39,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.getElementById('starStart'); // 수정: button 변수를 startStar id를 가진 요소로 선택
-            button.addEventListener('click', function(){
+            button.addEventListener('click', function () {
                 const ea = Number(document.getElementById('ea').value);
                 const panel = document.getElementById('panel'); // 수정: panel 변수 오타 수정
 
@@ -48,29 +49,31 @@
                 }
                 panel.innerHTML = '';
 
-                for(let i = 1; i <= ea; i++){
-                    for(let j = i; j < ea; j++) {
+                for (let i = 1; i < ea; i++) {
+                    for (let k = 0; k < (ea - i); k++) {
                         panel.innerHTML += '&nbsp;';
                     }
-                    for(let j = 0; j < (i*2); j++) {
+                    for (let j = 0; j < (2 * i + 1); j++) {
                         panel.innerHTML += '*';
                     }
                     panel.innerHTML += '<br>';
                 }
-                for(let i = ea - 1; i >= 1; i--){
-                    for(let j = i; j < ea; j++) {
+                for (let i = 0; i < ea + 1; i++) {
+                    for (let k = 0; k < i; k++) {
                         panel.innerHTML += '&nbsp;';
                     }
-                    for(let j = 0; j < (i*2) - 1; j++) {
+                    for (let j = 0; j < (2 * (ea - i) + 1); j++) {
                         panel.innerHTML += '*';
                     }
                     panel.innerHTML += '<br>';
                 }
+
             });
         });
 
     </script>
 </head>
+
 <body>
     <div id="panel">
     </div>
@@ -80,4 +83,5 @@
         <button id="starStart">다이아몬드 찍기</button> <!-- 수정: id 속성값 수정 -->
     </div>
 </body>
+
 </html>

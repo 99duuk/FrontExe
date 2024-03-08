@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+        7을 입력하면
+           *
+          ***
+         *****
+        *******
+         *****
+          ***
+           *
+        */
+        let num = Number(prompt('Enter a number', 7));
+        let output = '';
+
+        let mid_pos = parseInt(num / 2);
+        console.log('mid_pos=' + mid_pos);
+
+        let w_star = 0;
+        for (let i = 0; i < num; i++) {
+            for (let j = 0; j < num; j++) {
+                if (j >= mid_pos - w_star && j <= mid_pos + w_star)
+                    output += '*';
+                else
+                    output += ' ';
+            }
+
+            if (i < mid_pos)
+                w_star++;
+            else
+                w_star--;
+
+            output += '\n';
+        }
+
+
+
+        console.log(output);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
