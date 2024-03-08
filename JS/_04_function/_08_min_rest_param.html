@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+                        // ... 가변 매개변수(매개변수 여러 개 받을 수 있음)
+        function min(...items){
+            let min = items[0];
+            for(const item of items){
+                if(min > item)
+                min = item;
+            }
+        return min;
+        }
+
+        console.log(min(25, 22, 77, 12, 99));
+        console.log(min(25, 22, 77, 12, 3, 99, 2, 100));
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
