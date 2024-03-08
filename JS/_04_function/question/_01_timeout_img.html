@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        #output{
+            width: 600px;
+            height: 200px;
+            border: 4px solid black;
+            margin: 50px;
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+            vertical-align: middle;
+        }
+    </style>
+    <script>
+        // 상자를 600px로 넓힌 후에
+        //  3초 후 안녕하세요 환영합니다 
+        // 상자에 출력
+        document.addEventListener('DOMContentLoaded', () =>{
+            let $output = document.querySelector('#output');
+            let images = ['../../../images_D/루크.jpg', '../../../images_D/루크2.jpg', '../../../images_D/오비완1.jpg'];
+            let imageIndex = 0;
+            
+            function changeImage() {
+                $output.style.backgroundImage = `url(${images[imageIndex]})`;
+                imageIndex = (imageIndex + 1) % images.length; // 다음 이미지 인덱스 계산
+            }
+
+            // 0.5초마다 이미지 변경
+            setInterval(changeImage, 500);
+        });
+            /*
+              let count = 0;
+              
+            setInterval(function(){
+                $output.textContent = '하이루';
+                setTimeout(function() {
+                    $output.textContent = '방가방가';
+                }, 2000)
+            }, 3000);
+        })
+        */
+    </script>
+</head>
+
+<body>
+    <div id="output"></div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel{
+            width: 750px;
+            height: 650px;
+            border: 3px solid #cc00ff;
+            position: relative;
+        }
+        #bar{
+            position: absolute;
+            left: 50px;
+            top: 190px;
+            width: 650px;
+            height: 20px;
+            background-color: rebeccapurple;
+        }
+        #fish{
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+        #nav{
+            margin-top: 20px;
+            text-align: center;
+            width: 750px;
+
+        }
+    </style>
+
+    <script>
+        /*
+        물고기를 상자에 띄우고
+        물고기를 5초안에 최대한 클릭
+        클릭한 횟수가 상자위에 출력
+        5초 지나면 더이상 횟수 올라가지 않음
+    
+        */
+        document.addEventListener('DOMContentLoaded', () =>{
+            let $fish = document.querySelector('#fish');
+            let $button = document.querySelector('#btnMove');
+            const MOVE_VAL = 50;
+            let step = MOVE_VAL;
+            const MAX_X = 430;
+            const MIN_X = 50;
+            let intervalId;
+
+            $button.addEventListener('click', () => {
+                intervalId = setInterval(() => {
+                let x = $fish.getBoundingClientRect().left + step;
+
+                if(x >= MAX_X){
+                    x = MAX_X;
+                    $fish.setAttribute('src', '../../images_D/yoda.png');
+                    step = -MOVE_VAL;
+                }else if(x < MIN_X){
+                    x = MIN_X;
+                    $fish.setAttribute('src', '../../images_D/yoda.png');
+                    step = MOVE_VAL;
+                }
+                $fish.style.left = x + 'px';
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <img src="../../images_D/yoda.png" id="fish">
+    <div id="bar"></div>
+    </div>
+    <div id="nav">
+        <button id="btnMove">fight</button>
+        <button id="btnStop">stop</button>
+
+    </div>
+</body>
+</html>

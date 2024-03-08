@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel{
+            width: 1200px;
+            height: 300px;
+            border: 1px solid #999;
+            position: relative;
+        }
+        #bar{
+            position:absolute;
+            left:50px;
+            top:190px;
+            width:1000px;
+            height: 20px;
+            background: black;
+        }
+        #fish{
+            position: absolute;
+            left: 50px; /* 초기 위치 */
+            top: 120px; /* 초기 위치 */
+            width: 300px;
+            transition: left 1s; /* 움직임에 대한 transition 효과 */
+        }
+        #nav{
+            margin-top: 20px;
+            text-align: center;
+            width: 600px;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let $fish = document.querySelector('#fish');
+            const MOVE_VAL = 5000; // 움직이는 속도 조절
+            let step = MOVE_VAL;
+            const MAX_X = 730; // 오른쪽 끝 위치
+            const MIN_X = 50; // 왼쪽 끝 위치
+            let direction = 1; // 초기 이동 방향 (1: 오른쪽, -1: 왼쪽)
+
+            // 움직임 함수
+            function moveFish() {
+                let currentLeft = parseFloat(window.getComputedStyle($fish).left);
+                
+                if (currentLeft >= MAX_X) {
+                    direction = -1; // 오른쪽 끝에 도달하면 왼쪽으로 이동
+                } else if (currentLeft <= MIN_X) {
+                    direction = 1; // 왼쪽 끝에 도달하면 오른쪽으로 이동
+                }
+                
+                let nextLeft = currentLeft + step * direction;
+                $fish.style.left = nextLeft + 'px';
+            }
+
+            // 시작 함수
+            function startFish() {
+                // 일정 간격으로 moveFish 함수 호출하여 이미지 이동
+                intervalId = setInterval(moveFish, 50); // 50 milliseconds 마다 움직임
+            }
+
+            // 정지 함수
+            function stopFish() {
+                // setInterval 정지
+                clearInterval(intervalId);
+            }
+
+            // 버튼 클릭 이벤트 핸들러
+            document.querySelector('#btnStart').addEventListener('click', startFish);
+            document.querySelector('#btnStop').addEventListener('click', stopFish);
+        });
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <img src="../../../images2/alpaca.jpg" id="fish">
+        <div id="bar"></div>
+    </div>
+    <div id="nav">
+        <button id="btnStart">시작</button>
+        <button id="btnStop">정지</button>
+    </div>
+</body>
+</html>
