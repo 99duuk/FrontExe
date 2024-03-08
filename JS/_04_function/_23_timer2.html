@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let id;
+        let count = 0 ;
+        id = setInterval( () => {
+            console.log(`뒤져서 나오면 십원에 한 대다? (${count}대)`);
+            count++;
+        }, 1000);
+
+        setTimeout(() => {
+            console.log('자 이제 맞자..');
+            clearInterval(id);  //id에 해당하는 타이머 종료
+        }, 5000);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
