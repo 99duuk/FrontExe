@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // func = function(){}를 하게 되면
+        // 이때 func 는 var func과 동일하다. 
+
+        // 그러므로 이름의 중복을 허용하지만
+        // elt func = function(){}으로 사용하면
+        // let은 변수의 중복을 허용하지 않으므로 
+        // 동일한 함수명이 있을 경우 에러를 발생시키게 된다. 
+        
+        let func = function(){
+            console.log('1번째 익명 함수 입니다.');
+        }  
+
+        function func() {
+            console.log('2번째 선언적 함수 입니다.');
+        }
+        
+        // Uncaught SyntaxError: Identifier 'func' has already been declared
+        func();
+
+    </script>
+ 
+</head>
+
+<body>
+
+</body>
+
+</html>
