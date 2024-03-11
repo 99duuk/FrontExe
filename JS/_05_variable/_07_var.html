@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            var 변수와 function을 사용한 선언적 함수는 다른 실행 코드에 우선시해서
+            최초에 메모리에 로딩하게 됨
+            이런 것을 '호이스팅'이라고 한다.(끌어올리다.)
+
+            프로그래밍의 순서의 혼란을 가져오므로 var => let, const 를 권장한다. 
+
+        */
+
+
+        console.log(i); //undefined    == 변수는 존재하지만 값이 정의되지 않았다. (var 젤 먼저 실행됨;;;)
+        i = 100;
+        console.log(i); // 100
+
+
+        // 아래와 같이 사용해도 무방
+        // but 이런 지나친 자유도가 프밍 오류 lot 가져옴
+        // js에서 strict mode 설정하면 아래와 같은 변수 선언 오류로 처리됨
+        k = '홍길동';
+        console.log(k); 
+
+        console.log(j); //Uncaught ReferenceError: cnsolo is not defined
+        
+        var i;          // 가장 먼저 실행
+
+    </script>
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
