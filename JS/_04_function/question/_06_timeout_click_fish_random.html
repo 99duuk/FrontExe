@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel {
+            width: 750px;
+            height: 650px;
+            border: 3px solid #cc00ff;
+            position: relative;
+        }
+
+        #bar {
+            position: absolute;
+            left: 50px;
+            top: 350px;
+            width: 650px;
+            height: 5px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #bar2 {
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            width: 5px;
+            height: 600px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+
+        #nav {
+            margin-top: 20px;
+            text-align: center;
+            width: 750px;
+        }
+
+        #score {
+            font-size: 30px;
+            color: #09c;
+
+        }
+
+        h3 {
+            text-align: right;
+            margin: 80px;
+            font-style: italic;
+        }
+    </style>
+
+    <script>
+        /*
+            move_fish에서 button을 2개 생성
+            1개는 '시작' 버튼
+            1개는 '멈춤' 버튼
+            
+            '시작' 버튼을 누르면 물고기가 자동으로 왕복 움직이도록
+            '멈춤' 버튼을 누르면 물고기가 멈추도록 
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            let $fish = document.querySelector('#fish');
+            const step_val = 50;
+            let step = step_val;
+            const MAX_X = 430;
+            const MIN_X = 50;
+            const MAX_Y = 430;
+            const MIN_Y = 50;
+
+            let timerID = null;
+            const INTERVAL = 100;
+            const INTERVAL_T = 10000;
+            let count = 0;
+            let isPlaying = true;
+
+            let $score = document.querySelector('#score');
+            let $btnStart = document.querySelector('#btnStart');
+            let $btnStop = document.querySelector('#btnStop');
+
+            function random(){
+                const randomX = Math.floor(Math.random() * (MAX_X - MIN_X + 1)) + MIN_X;
+                const randomY = Math.floor(Math.random() * (MAX_Y - MIN_Y + 1)) + MIN_X;
+                $fish.style.left = randomX + 'px';
+                $fish.style.top = randomY + 'px';
+            }
+
+            $btnStart.addEventListener('click', () => {
+                // 타이머가 작동하면 추가로 동작하지 못하도록.
+                if (timerID !== null)
+                    return;
+
+                timerID = setInterval(() => {
+                    let x = $fish.getBoundingClientRect().left + step;
+
+                    if (x >= MAX_X) {
+                        x = MAX_X;
+                        $fish.setAttribute('src', '../../../images_D/yoda.png'); // 이미지 경로를 설정하세요.
+                        step = -step_val;
+                    } else if (x < MIN_X) {
+                        x = MIN_X;
+                        $fish.setAttribute('src', '../../../images_D/yoda.png'); // 이미지 경로를 설정하세요.
+                        step = step_val;
+                    }
+
+                    $fish.style.left = x + 'px';
+                }, INTERVAL);
+            });
+
+            $btnStop.addEventListener('click', () => {
+                // 타이머가 동작하지 않는다면 멈출 필요 없다. 
+                if (timerID === null)
+                    return;
+
+                clearInterval(timerID);
+                timerID = null;
+            });
+
+
+            $fish.addEventListener('click', () => {
+                if (isPlaying) {
+                    $score.textContent = ++count;
+                }
+            });
+            setTimeout(() => {
+                isPlaying = false;
+                alert('게임이 종료되었습니다.');
+            }, INTERVAL_T);
+        });
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="panel">
+        <h3>포스를 깨우거라... <br>
+            <br> 현재 점수 <span id="score">0</span>
+        </h3>
+        <img src="../../../images_D/yoda.png" id="fish">
+        <div id="bar"></div>
+        <div id="bar2"></div>
+    </div>
+    <div id="nav">
+        <button id="btnStart">fight</button>
+        <button id="btnStop">stop</button>
+    </div>
+</body>
+
+</html>

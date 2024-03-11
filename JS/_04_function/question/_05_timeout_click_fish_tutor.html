@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel {
+            width: 750px;
+            height: 650px;
+            border: 3px solid #cc00ff;
+            position: relative;
+        }
+
+        #bar {
+            position: absolute;
+            left: 50px;
+            top: 350px;
+            width: 650px;
+            height: 5px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #bar2 {
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            width: 5px;
+            height: 600px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #fish {
+            position: absolute;
+            left:200px;
+            top: 130px;
+        }
+
+        #score{
+            font-size: 30px;
+            color: #09c;
+            
+        }
+    
+
+        h3 {
+            text-align: right;
+            margin: 80px;
+            font-style: italic;
+        }
+    </style>
+
+    <script>
+        /*
+        물고기를 상자에 띄우고
+        물고기를 5초안에 최대한 클릭
+        클릭한 횟수가 상자위에 출력
+        5초 지나면 더이상 횟수 올라가지 않음
+    
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            let count = 0;
+            const INTERVAL = 5000;
+            let isPlaying = true;
+            let $score = document.querySelector('#score');
+            let $fish = document.querySelector('#fish');
+
+            $fish.addEventListener('click', () => {
+                if(isPlaying) {
+                    $score.textContent = ++count;
+                }
+        });
+
+        setTimeout(() => {
+        isPlaying = false;
+        alert('게임이 종료되었습니다.');
+    }, INTERVAL);
+    });
+
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <h3>포스를 깨우거라... <br>
+            <br> 현재 점수 <span id="score">0</span>
+        </h3>
+        <img src="../../../images_D/yoda.png" id="fish">
+        <div id="bar"></div>
+        <div id="bar2"></div>
+
+</body>
+</html>

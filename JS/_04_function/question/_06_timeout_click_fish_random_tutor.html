@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panel {
+            width: 750px;
+            height: 650px;
+            border: 3px solid #cc00ff;
+            position: relative;
+            background-image: url('../../../../../FrontExe/images_D/pre.jpg');
+        }
+
+        #bar {
+            position: absolute;
+            left: 50px;
+            top: 350px;
+            width: 650px;
+            height: 5px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #bar2 {
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            width: 5px;
+            height: 600px;
+            background-color: rebeccapurple;
+            border: 2px dotted red;
+            opacity: 0.7;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+
+        #nav {
+            margin-top: 20px;
+            text-align: center;
+            width: 750px;
+        }
+
+        #score {
+            font-size: 30px;
+            color: #09c;
+
+        }
+
+        h3 {
+            text-align: right;
+            margin: 80px;
+            font-style: italic;
+        }
+    </style>
+
+    <script>
+        /*
+            move_fish에서 button을 2개 생성
+            1개는 '시작' 버튼
+            1개는 '멈춤' 버튼
+            
+            '시작' 버튼을 누르면 물고기가 자동으로 왕복 움직이도록
+            '멈춤' 버튼을 누르면 물고기가 멈추도록 
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            let count = 0;
+            const INTERVAL = 700;
+            const TIME_OUT = 10000;
+            let isPlaying = true;
+            let timerID = null;
+            const MAX_X = 700 - 200;
+            const MAX_Y = 550 - 450;
+            let $score = document.querySelector('#score');
+            let $fish = document.querySelector('#fish');
+
+            let $gameover = document.querySelector('#gameover');
+
+            $fish.addEventListener('click', () => {
+                if (isPlaying) {
+                    $score.textContent = ++count;
+                }
+            });
+
+            timerID = setInterval(() => {
+                let x = parseInt(Math.random() * MAX_X);
+                let y = parseInt(Math.random() * MAX_Y);
+
+                $fish.style.left = x + 'px';
+                $fish.style.top = y + 'px';
+            }, INTERVAL);
+
+            setTimeout(() => {
+                isPlaying = false;
+                clearInterval(timerID);
+                showEndTitle();
+                // alert('게임이 종료되었습니다');
+            }, TIME_OUT);
+
+            function showEndTitle() {
+                $gameover.animate(
+                    {
+                        opacity: [
+                            0.0,  // 시작 값
+                            1.0  // 종료 값
+                        ]
+                    },
+                    {
+                        durations: 1500,  // 밀리초 지정
+                        fill: 'forwards',  // 종료 시 속성을 지님\
+                        easing: 'ease'  // 가속도 종류
+                    }
+                )
+        }
+
+
+        });
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="panel">
+        <h3>포스를 깨우거라... <br>
+            <br> 현재 점수 <span id="score">0</span>
+        </h3>
+        <img src="../../../images_D/yoda.png" id="fish">
+        <div id="bar"></div>
+        <div id="bar2"></div>
+    </div>
+    <div id="nav">
+        <button id="btnStart">fight</button>
+        <button id="btnStop">stop</button>
+    </div>
+</body>
+
+</html>
