@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            
+        */
+
+        const pet = {
+            name: '뽀삐',
+            age: 6,
+            color: '하얀색'
+        };
+        
+        const star = { 
+            ...pet,             // pet 객체의 속성들을 star 객체에 복사합니다.
+            name: '별',         // name 속성을 수정합니다.
+            age: 3,             // age 속성을 수정합니다.
+            weight: '3.4kg'     // weight 속성을 추가합니다.
+        };
+        
+        console.log(pet);      // 원본 객체를 출력합니다.
+        console.log(star);     // 수정된 새로운 객체를 출력합니다.
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
