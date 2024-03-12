@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            foodArray는 객체를 참조값으로 가리키고 있다.
+                So const foods = foodArray;를 하게 되면
+                foods와 foodArray는 동일한 객체를 가리키게 된다.
+                (==> 아래와 같은 결과)
+        */
+
+        const foodArray=['우유', '식빵'];
+        const foods = foodArray;                // 참조값 복사
+        foodArray.push('라면');
+        foods.push('바나나');
+
+        console.log(foodArray);
+        console.log(foods);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
