@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let calculator = function (op, num1, num2) {
+            
+            let add = function (num1, num2) {
+                return num1 + num2;
+            }
+            let sub = function (num1, num2) {
+                return num1 - num2;
+            }
+            let mul = function (num1, num2) {
+                return num1 * num2;
+            }
+            let div = function (num1, num2) {
+                return num1 / num2;
+            }
+            let remainder = function(num1, num2){
+                return num1 % num2;
+            }
+            let result
+
+            switch (op) {
+                case '+':
+                    result = add(num1 + num2);
+                    break;
+                case '-':
+                    result = sub(num1 - num2);
+                    break;
+                case '*':
+                    result = mul(num1 * num2);
+                    break;
+                case '/':
+                    result = div(num1 / num2);
+                    break;
+                case '%':
+                    result = re,remainder(num1 % num2);
+                default: result = '지원하지 않는 연산자 입니다.'; break;
+            }
+
+            
+
+            return result;
+        }
+
+        console.log(calculator('+', 100, 20));
+        console.log(calculator('-', 100, 20));
+        console.log(calculator('*', 100, 7));
+        console.log(calculator('/', 100, 3));
+        console.log(calculator('%', 100, 20));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
