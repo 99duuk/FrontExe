@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 개행문자, \t, \n과 같은 앞뒤 공백 문자 제거
+        const stringA = '\n메시지를 입력했는데 줄바꿈이 들어갔다.';
+        const stringB = '   앞과 뒤에 공백이 들어갔다    ';
+        console.log(stringA.length);
+        console.log(stringB.length);
+        console.log(stringA.trim().length);
+        console.log(stringB.trim().length);
+
+        // 문자열 자르기 : split()
+        let input = `
+        일자,달러,엔,유로
+        02,1141.8,1077.45,1255,37
+        03,1148.7,1111.36,1274,45
+        04,1140.2,1107.11,1266,26
+        05,1143.1,1099.22,1267,65
+        06,1141.5,1091.33,1261,78
+        `;
+
+        input = input.trim();       // 양쪽 공백문자 제거
+        input = input.split('\n');  // \n 기준으로 잘라서 배열
+        console.log(input);
+
+        input = input.map((line) => line.split(','))
+
+        // map을 사용해서 각 배열 요소의 공백 문자 제거
+        input = input.map(function(line){
+            return line = line.map(function(elem){
+                return elem.trim();
+            });
+        });
+
+        console.log(input);
+        const jsonStr = JSON.stringify(input);
+        console.log(jsonStr);
+
+        /* 
+        // forEach를 사용해서 각 배열 요소의 공백 문자 제거
+
+        let newInput = [];
+        input.forEach(function(line){
+            let temp = [];
+            line.forEach(function(elem){
+                elem = elem.trim();     
+                temp.push(elem);
+            });
+            newInput.push(temp)
+        });        
+        console.log(newInput);
+        const jsonStr = JSON.stringify(newInput);
+        console.log(jsonStr);
+        */
+
+        /*
+           백틱 문자로 공백이나 개행이 포함된 문자열이 있다.
+       
+           StringA와 StringB 변수에 각각 백틱 문자를 사용하여 공백이나 개행이 포함된 문자열이 선언되어 있습니다.
+           trim()으로 앞뒤 공백을 제거하고 문자열 길이를 출력한다.
+       
+           StringA와 StringB의 길이를 출력합니다.
+           trim() 메서드를 사용하여 각 문자열의 앞뒤 공백을 제거하고, 그 결과의 길이를 출력합니다.
+           백틱 문자로 공백이나 개행이 포함된 문자열이 있다.
+       
+           input 변수에 백틱 문자를 사용하여 공백이나 개행이 포함된 문자열이 선언되어 있습니다.
+           split() 메서드로 문자열을 특정 구분자 기준으로 분리한다.
+       
+           trim() 메서드를 사용하여 문자열의 앞뒤 공백을 제거합니다.
+           split('\n') 메서드를 사용하여 개행문자를 기준으로 문자열을 분리합니다.
+           input trim 통해 문자열 앞뒤 공백 제거
+       
+           이미 수행된 내용입니다.
+           split 사용해 개행문자 기준 분리한다.
+       
+           이미 수행된 내용입니다.
+           map 으로 배열 각 요소 쉼표 기준 분리한다.
+       
+           map() 메서드를 사용하여 배열의 각 요소를 쉼표(,)를 기준으로 분리합니다.
+       */
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+/*
+           백틱 문자로 공백이나 개행이 포함된 문자열이 있다.
+       
+           StringA와 StringB 변수에 각각 백틱 문자를 사용하여 공백이나 개행이 포함된 문자열이 선언되어 있습니다.
+           trim()으로 앞뒤 공백을 제거하고 문자열 길이를 출력한다.
+       
+           StringA와 StringB의 길이를 출력합니다.
+           trim() 메서드를 사용하여 각 문자열의 앞뒤 공백을 제거하고, 그 결과의 길이를 출력합니다.
+           백틱 문자로 공백이나 개행이 포함된 문자열이 있다.
+       
+           input 변수에 백틱 문자를 사용하여 공백이나 개행이 포함된 문자열이 선언되어 있습니다.
+           split() 메서드로 문자열을 특정 구분자 기준으로 분리한다.
+       
+           trim() 메서드를 사용하여 문자열의 앞뒤 공백을 제거합니다.
+           split('\n') 메서드를 사용하여 개행문자를 기준으로 문자열을 분리합니다.
+           input trim 통해 문자열 앞뒤 공백 제거
+       
+           이미 수행된 내용입니다.
+           split 사용해 개행문자 기준 분리한다.
+       
+           이미 수행된 내용입니다.
+           map 으로 배열 각 요소 쉼표 기준 분리한다.
+       
+           map() 메서드를 사용하여 배열의 각 요소를 쉼표(,)를 기준으로 분리합니다.
+       */
