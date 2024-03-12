@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const data = [{
+            name: '홍길동',
+            job: '활빈당',
+            age: 24
+        },
+        {
+            name: '김동우',
+            job: '비트캠프',
+            age: 26
+        },
+        {
+            name: '권재원',
+            job: '비트캠프',
+            age: 26
+        }];
+
+        
+        //json객체 배열, json 객체 => json문자열로 변환
+        console.log(JSON.stringify(data));
+        console.log(typeof jsonStr);
+        console.log(jsonStr);
+
+        //가운데는 사용하지 않으므로 null, 2는 들여쓰기 2칸 의미
+        jsonStr = JSON.stringify(data, null, 2);
+        console.log(typeof jsonStr);
+        console.log(jsonStr);
+
+        // json문자열 => json객체/json객체 배열
+        
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
