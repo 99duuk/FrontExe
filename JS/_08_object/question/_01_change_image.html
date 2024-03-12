@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner-container{
+            position: relative;
+            display: inline-block;
+        }
+
+        .banner {
+            width: 400px;
+            height: 200px;
+            position: relative; /* 상대 위치 설정 */
+            border: 3px solid red;
+            box-shadow: 10px 10px white;
+        }
+        .banner-text{
+            position: absolute;
+            bottom: -100px; /* 이미지 하단에 위치 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background-color: rgba(255, 84, 84, 0.7);
+            padding: 5px 10px;
+            z-index: 2;
+            border-radius: 15px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let count = 0;
+            const imageNames = ['../../../images2/logo_01.jpg',
+                '../../../images2/logo_02.jpg',
+                '../../../images2/logo_03.jpg',
+                '../../../images2/logo_04.jpg',
+                '../../../images2/logo_05.jpg',
+                '../../../images2/logo_06.jpg',
+                '../../../images2/logo_07.jpg',
+                '../../../images2/logo_08.jpg'];
+
+            function changeImage() {
+                const banner = document.getElementById('banner1');
+                banner.src = imageNames[count];
+
+                count++;
+
+                if (count === imageNames.length) {
+                    count = 0;
+                }
+            }
+
+            let intervalId;
+            let intervalDuration = 1000;
+
+            function resetInterval() {
+                clearInterval(intervalId);
+                intervalId = setInterval(changeImage, intervalDuration);
+
+                const speedDisplay = document.querySelector('.banner-text');
+                speedDisplay.textContent = (intervalDuration / 1000) + 's';
+            }
+            resetInterval();
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowUp') {
+                    intervalDuration = Math.max(intervalDuration - 100, 100);
+                    resetInterval();
+                } else if(event.key === 'ArrowLeft'){
+                    intervalDuration = 1000;
+                } else if (event.key === 'ArrowDown') {
+                    intervalDuration = Math.min(intervalDuration + 100, 2000);
+                    resetInterval();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="banner-container">
+        <img src="../../../images2/logo_01.jpg" class="banner" id="banner1">
+        <p class="banner-text">0</p>
+    </div>
+</body>
+
+</html>
