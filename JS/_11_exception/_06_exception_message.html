@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 예외 발생하는 상황 
+        
+        try {
+            // js 배열 최대 크기는 4byte
+            // 약 42억개 
+
+            const array = new Array(999999999999999999999999);
+        } catch(exception) {
+            console.log(exception);
+            console.log('');
+            console.log(`예외 이름 : ${exception.name}`);
+            console.log(`예외 메시지 : ${exception.message}`);
+        } 
+        
+
+        
+       
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
