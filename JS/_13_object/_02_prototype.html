@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 생성자 함수(객체를 생성하는 함수)
+        function Circle(radius){
+        this.radius = radius;
+
+        this.getArea =function(){
+            return Math.PI * this.radius ** 2;
+        }
+    }
+
+    /*
+        java는 클래스의 소속으로 메서드를 가진다
+        필드는 객체마다 별도로 존재하지만, 
+        메서드는 1번째 객체가 생성될 때 메모리에 로딩되고
+        이후에는 같은 메서드를 재사용한다. 
+
+        js에서 '생성자 함수' 를 이용햇 객체를 만드는 방식은
+        객체마다 메서드를 별도로 보유하게 된다.
+        즉, 동일한 기능을 하는 메서드를 객체별로 따로 가지게 됨
+
+        이러한 낭비 막기 위해서 js에서는 prototype이라는 문법 제공함
+
+    */
+
+    const circle1 = new Circle(3);
+    const circle2 = new Circle(5);
+
+    console.log(circle1.getArea === circle2.getArea);
+    console.log(circle1.getArea);
+    console.log(circle2.getArea);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
