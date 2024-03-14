@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        이 예제는 JavaScript에서 `toString()` 메서드를 오버라이딩하지 않았을 때와 오버라이딩했을 때의 동작을 비교하는 것을 보여줍니다.
+
+1. `Any` 클래스:
+    - `Any` 클래스는 `name` 속성을 가지는 간단한 클래스입니다. 그러나 `toString()` 메서드를 오버라이딩하지 않았습니다.
+
+2. `Pet` 클래스:
+    - `Pet` 클래스는 `name`과 `age` 속성을 가지며, `toString()` 메서드를 오버라이딩하여 객체의 이름과 나이를 문자열로 반환합니다.
+
+3. `alert()`와 `console.log()` 호출:
+    - `Any` 클래스로 생성된 객체를 `alert()`와 `console.log()`에 전달하면 기본적으로 객체의 문자열 표현이 출력됩니다. `toString()` 메서드를 오버라이딩하지 않았기 때문에 객체의 내부를 나타내는 문자열이 반환됩니다.
+    - `Pet` 클래스로 생성된 객체를 `alert()`와 `console.log()`에 전달하면 `toString()` 메서드에서 정의한 형식의 문자열이 반환됩니다. 따라서 이름과 나이를 포함한 사람이 읽기 쉬운 형태의 문자열이 출력됩니다.
+
+이 예제는 `toString()` 메서드의 오버라이딩이 객체를 문자열로 변환할 때 어떻게 동작하는지를 보여줍니다. 객체를 문자열로 변환하여 사용자에게 표시할 때 유용한 정보를 제공할 수 있습니다.*/
+        class Any{
+            constructor(name){
+                this.name;
+            }
+        }
+
+        class Pet{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+            toString(){
+                return '이름:' + this.name + '\n' + '나이:' + this.age + '살';
+            }
+        }
+
+        // toString()을 오버라이딩 하지 않았을 때
+        const any = new Any('홍길동');
+        alert(any);
+        console.log(any + '');
+
+        // toString()을 오버라이딩 했을 때
+        const pet = new Pet('독구', 4);
+        alert(pet);
+        console.log(pet + '');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
