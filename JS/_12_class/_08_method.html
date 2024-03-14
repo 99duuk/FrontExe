@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        class Student {
+            constructor(name, kor, eng, math, sci) {
+                this.name = name;
+                this.kor = kor;
+                this.eng = eng;
+                this.math = math;
+                this.sci = sci;
+            }
+
+            getSum() {
+                return this.kor + this.math + this.eng + this.sci;
+            }
+
+            getAvg() {
+                return this.getSum() / 4;
+            } 
+
+            toString() {
+            return `${this.name}\t${this.getSum()}점\t${this.getAvg()}점\n`;
+            }
+        }
+
+        const students = [
+            new Student('홍길동', 99, 80, 34, 65),
+            new Student('김나리', 64, 56, 77, 34),
+            new Student('임연수', 75, 67, 34, 65),
+            new Student('동자승', 66, 62, 69, 73)
+        ]
+
+        let output = '';
+
+        for(const s of students) {
+            output += s;
+        }
+
+        console.log(output);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
