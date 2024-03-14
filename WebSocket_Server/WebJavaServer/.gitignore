@@ -6,3 +6,4 @@
 /.recommanders/
 .settings/
 *.class
+/bin/
