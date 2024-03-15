@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="E:/FrontExe/WebSocket_Server/WebJavaServer/lib/Java-WebSocket-1.5.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/FrontExe/WebSocket_Server/WebJavaServer/lib/json-20240303.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/FrontExe/WebSocket_Server/WebJavaServer/lib/slf4j-api-2.0.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Lecture/FrontExe/WebSocket_Server/WebJavaServer/lib/Java-WebSocket-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Lecture/FrontExe/WebSocket_Server/WebJavaServer/lib/json-20240303.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Lecture/FrontExe/WebSocket_Server/WebJavaServer/lib/slf4j-api-2.0.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -15,7 +15,7 @@ public class SimpleWebSocketServer extends WebSocketServer{
 		final int PORT = 9000;
 		
 		WebSocketServer server = new SimpleWebSocketServer(new InetSocketAddress(host, PORT));
-		server.run();	 	//서버 돌아가기 시작~
+		server.run();
 	}
 	
 	public SimpleWebSocketServer(InetSocketAddress inetAddr) {
@@ -25,11 +25,9 @@ public class SimpleWebSocketServer extends WebSocketServer{
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println(conn + " has diconnected");		
-		//ex.getStackTrace(); 생략하고 위에만 보여주는 걸로...
-
 	}
 
-	@Override //샌드리시브
+	@Override
 	public void onError(WebSocket conn, Exception ex) {
 		System.out.println(ex.getMessage());
 		//ex.getStackTrace();
@@ -39,7 +37,7 @@ public class SimpleWebSocketServer extends WebSocketServer{
 	public void onMessage(WebSocket conn, String message) {
 		System.out.println("Message from client: " + message);
 		
-		// json 문자열 to json 객체
+		// json문자열 -> json객체
 		JSONObject msgObj = new JSONObject(message);
 		String cmd = msgObj.getString("cmd");		// 패킷 종류를 구분할 수 있는 명령어를 제일 먼저 추출
 		
@@ -55,12 +53,9 @@ public class SimpleWebSocketServer extends WebSocketServer{
 			ackObj.put("cmd", "login");
 			ackObj.put("result", "ok");
 			conn.send(ackObj.toString());   // json문자열로 변환되어서 클라이언트한테 전송됨
-		}else if(cmd.equals("allchat")) {	//접속된 대상에게 브로드캐스트 해야겠죠?
-
-			String id = msgObj.getString("id");		//누가 보냈는지 알아야하니까 id
-
-			String msg = msgObj.getString("msg");	//뭘 보냈는지 알아야하니까 msg
-
+		}else if(cmd.equals("allchat")) {
+			String id = msgObj.getString("id");
+			String msg = msgObj.getString("msg");
 			System.out.printf("채팅 id: %s   msg: %s\n", id, msg);
 			
 			// 클라이언트한테 응답 전송
@@ -86,7 +81,6 @@ public class SimpleWebSocketServer extends WebSocketServer{
 		ackObj.put("cmd", "connect");
 		ackObj.put("result", "Welcome to the Server!");
 		conn.send(ackObj.toString());   // 클라이언트한테 메시지 보내기
-		
 	}
 
 	@Override
@@ -95,3 +89,13 @@ public class SimpleWebSocketServer extends WebSocketServer{
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

@@ -5,12 +5,10 @@ const server_address = `ws://${SERVER_IP}:${SERVER_PORT}`;  // ws://127.0.0.1:90
 
 const socket = new WebSocket(server_address);
 
-socket.opopen = function (e) {
-    //접속 성공하면 호출됨 (callback함수임ㅋ)
+socket.onopen = function (e) {
     const log_msg = '[open] 연결이 설정되었습니다.';
 
     displayMessage('#messages', log_msg);
-    //얘들이 화면에 출력되면 구현 된거지
 }
 
 socket.onclose = function (e) {
@@ -59,15 +57,12 @@ const displayMessage = function ($parentSelector, log_msg, kind_log = 0) {
     }
 }
 
-
-
 // 통신 패킷 출력
 const displayPacketMessage = function ($parentSelector, message) {
     // 이 요소 아래에 메시지 요소를 추가
     const parentElem = document.querySelector($parentSelector);
 
     // json문자열 -> js 객체로 변환
-    //넘어오는 데이터 json으로 넘어올거라.. json으로 변환..
     const msgObj = JSON.parse(message);
 
     let msg = '';
@@ -89,5 +84,4 @@ const displayPacketMessage = function ($parentSelector, message) {
     const childElem = document.createElement('div');
     childElem.textContent = msg;
     parentElem.appendChild(childElem);
-    //넘어온 메시지를 childElem으로..??
 }
