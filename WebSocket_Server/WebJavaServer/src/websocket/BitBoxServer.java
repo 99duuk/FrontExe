@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import mysql.DBConnection; //  DBConnection 클래스 import 
 
-public class SimpleWebSocketServer extends WebSocketServer {
+public class BitBoxServer extends WebSocketServer {
 
 	// <--------------------------추가--------------> DB연결 위한 DBConnection 객체 생성
 	private DBConnection dbConnection;
@@ -19,16 +19,16 @@ public class SimpleWebSocketServer extends WebSocketServer {
 		String host = "127.0.0.1"; // localhost
 		final int PORT = 6454;
 
-		WebSocketServer server = new SimpleWebSocketServer(new InetSocketAddress(host, PORT));
+		WebSocketServer server = new BitBoxServer(new InetSocketAddress(host, PORT));
 		server.run(); // 서버 돌아가기 시작~
 	}
 
-	public SimpleWebSocketServer(InetSocketAddress inetAddr) {
+	public BitBoxServer(InetSocketAddress inetAddr) {
 		super(inetAddr);
 
 		// <--------------------------추가--------------> DB객체 초기화 
 		dbConnection = new DBConnection();
-		// <s--------------------------추가-------------->
+		// <--------------------------추가-------------->
 	}
 	
 
