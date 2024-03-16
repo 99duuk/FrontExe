@@ -8,17 +8,17 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.json.JSONObject;
 
-public class SimpleWebSocketServer extends WebSocketServer{
+public class TestServer extends WebSocketServer{
 	
 	public static void main(String[] args) {
 		String host = "127.0.0.1";		// localhost
 		final int PORT = 6454;
 		
-		WebSocketServer server = new SimpleWebSocketServer(new InetSocketAddress(host, PORT));
+		WebSocketServer server = new TestServer(new InetSocketAddress(host, PORT));
 		server.run();	 	//서버 돌아가기 시작~
 	}
 	
-	public SimpleWebSocketServer(InetSocketAddress inetAddr) {
+	public TestServer(InetSocketAddress inetAddr) {
 		super(inetAddr);
 	}
 
@@ -84,7 +84,7 @@ public class SimpleWebSocketServer extends WebSocketServer{
 		
 		JSONObject ackObj = new JSONObject();
 		ackObj.put("cmd", "connect");
-		ackObj.put("result", "Welcome to the Server!");
+		ackObj.put("result", "하이루 방가방가");
 		conn.send(ackObj.toString());   // 클라이언트한테 메시지 보내기
 		
 	}
