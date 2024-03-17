@@ -1,56 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- HTML5 문서 형식을 지정 -->
+<html lang="en"> <!-- 문서 언어를 영어로 지정 -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./js/websocket-client.js"></script>
-    <script>
-        let userId = '';        // id 보관용
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정 -->
+    <title>Document</title> <!-- 문서 제목 -->
+    <script src="./js/websocket-client.js"></script> <!-- WebSocket 클라이언트 스크립트를 가져옴 -->
+    <script> <!-- 자바스크립트 코드 시작 -->
+        let userId = ''; // 사용자 ID를 보관하는 변수 선언 및 초기화
 
+        // 로그인 정보를 서버로 전송하는 함수
         const sendLogIn = function(){
-            const id = document.querySelector('#idInput').value;
-            const pass = document.querySelector('#passInput').value;
-            userId = id;        // 나중에 msg전송 때 사용하기 위해
-            const packet = {
-                cmd: 'login',
-                id:id,
-                pass:pass
+            const id = document.querySelector('#idInput').value; // 입력된 아이디 가져오기
+            const pass = document.querySelector('#passInput').value; // 입력된 패스워드 가져오기
+            userId = id; // 사용자 ID를 보관
+            const packet = { // 패킷 객체 생성
+                cmd: 'login', // 명령어: 로그인
+                id:id, // 아이디
+                pass:pass // 패스워드
             };
-            const jsonStr = JSON.stringify(packet);     // js객체 -> json문자열
-            sendMessage(jsonStr);
+            const jsonStr = JSON.stringify(packet); // 자바스크립트 객체를 JSON 문자열로 변환
+            sendMessage(jsonStr); // 서버로 메시지 전송
         }
+
+        // 채팅 메시지를 서버로 전송하는 함수
         const sendChatMsg = function(){
-            const message = document.querySelector('#messageInput').value;
-            const packet = {
-                cmd: 'allchat',
-                id:userId,
-                msg:message
+            const message = document.querySelector('#messageInput').value; // 입력된 메시지 가져오기
+            const packet = { // 패킷 객체 생성
+                cmd: 'allchat', // 명령어: 전체 채팅
+                id:userId, // 사용자 ID
+                msg:message // 메시지
             }
-            const jsonStr = JSON.stringify(packet);     // js객체 -> json문자열
-            sendMessage(jsonStr);
+            const jsonStr = JSON.stringify(packet); // 자바스크립트 객체를 JSON 문자열로 변환
+            sendMessage(jsonStr); // 서버로 메시지 전송
         }
 
+        // DOM이 로드되면 실행되는 이벤트 핸들러
         document.addEventListener('DOMContentLoaded', ()=>{
+            const btnLogIn = document.querySelector('#btnLogIn'); // 로그인 버튼 요소 가져오기
+            const btnChagMsg = document.querySelector('#btnChatMsg'); // 채팅 메시지 전송 버튼 요소 가져오기
 
-            const btnLogIn = document.querySelector('#btnLogIn');
-            const btnChagMsg = document.querySelector('#btnChatMsg');
-
+            // 로그인 버튼 클릭 시 sendLogIn 함수 호출
             btnLogIn.addEventListener('click', sendLogIn);
+            // 채팅 메시지 전송 버튼 클릭 시 sendChatMsg 함수 호출
             btnChagMsg.addEventListener('click', sendChatMsg);
         });
-    </script>
+    </script> <!-- 자바스크립트 코드 끝 -->
 </head>
+
 <body>
-    <h2>WebSocket 클라이언트</h2>
+    <h2>WebSocket 클라이언트</h2> <!-- 제목 표시 -->
+    <!-- 아이디 입력란 및 패스워드 입력란 -->
     <label>아이디: <input type='text' id='idInput' placeholder='id를 입력하세요'></label><br>
     <label>패스워드: <input type='password' id='passInput' placeholder='pass를 입력하세요'></label><br>
+    <!-- 로그인 전송 버튼 -->
     <button id='btnLogIn'>로그인 전송</button>
-    <hr>
+    <hr> <!-- 수평선 -->
+
+    <!-- 채팅 메시지 입력란과 전송 버튼 -->
     <input type="text" id="messageInput" placeholder="메시지를 입력하세요">
     <button id='btnChatMsg'>채팅 메시지 전송</button>
     <div id="messages">
         <!-- 메시지 출력 영역 -->
     </div>
 </body>
+
 </html>

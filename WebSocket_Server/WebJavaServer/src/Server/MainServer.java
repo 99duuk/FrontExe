@@ -1,4 +1,4 @@
-package websocket;
+package Server;
 
 import java.net.InetSocketAddress;
 

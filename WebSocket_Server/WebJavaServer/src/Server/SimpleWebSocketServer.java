@@ -1,4 +1,4 @@
-package websocket;
+package Server;
 
 import java.net.InetSocketAddress;
 
@@ -8,6 +8,7 @@ import org.java_websocket.server.WebSocketServer;
 import org.json.JSONObject;
 
 import mysql.DBConnection; //  DBConnection 클래스 import 
+
 
 public class SimpleWebSocketServer extends WebSocketServer {
 
@@ -28,7 +29,7 @@ public class SimpleWebSocketServer extends WebSocketServer {
 
 		// <--------------------------추가--------------> DB객체 초기화 
 		dbConnection = new DBConnection();
-		// <s--------------------------추가-------------->
+		// <--------------------------추가-------------->
 	}
 	
 
